@@ -1,0 +1,8 @@
+postgres:
+  username: "postgres"
+  password: "postgres"
+  host: "locahost"
+  port: "5432"
+  database: "example"
+  auto_migrate: true
+  enable-debug: true
