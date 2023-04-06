@@ -3,7 +3,8 @@ package cmd
 import (
 	"context"
 	"go-skeleton/internal/handler"
-	repo "go-skeleton/internal/repo/example"
+	db "go-skeleton/internal/infra/db"
+	repo "go-skeleton/internal/infra/repo/example"
 	service "go-skeleton/internal/service/example"
 	"go-skeleton/utils"
 	"log"
@@ -76,7 +77,7 @@ func (s server) RegisterHandler() {
 	s.router.Use(gin.Recovery())
 
 	// init database conn
-	db := utils.NewDB()
+	db := db.NewDB()
 
 	// init repo
 	exampleRepo := repo.NewExampleRepo(db)

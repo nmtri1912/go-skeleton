@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 	"go-skeleton/internal/entity"
-	repo "go-skeleton/internal/repo/example"
+	repo "go-skeleton/internal/infra/repo/example"
 	"go-skeleton/internal/request"
 )
 

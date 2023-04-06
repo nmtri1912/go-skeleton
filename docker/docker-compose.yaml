@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  db:
+    build:
+      context: ../
+      dockerfile: docker/db.dockerfile
+    image: db
+    container_name: db
+    volumes:
+      - ./tmp/db:/var/lib/postgresql-static/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: rmbg
+    ports:
+      - '54322:5432'
+
+  redis_cluster:
+    image: redis:6.2.6
+    container_name: redis_local
+    ports:
+      - "6379:6379"

@@ -1,4 +1,4 @@
-package utils
+package db
 
 import (
 	"fmt"
@@ -29,7 +29,7 @@ func NewDB() *gorm.DB {
 	})
 
 	if err != nil {
-		log.Fatal("Cannot init mysql connection ", err)
+		log.Fatal("Cannot init postgres connection ", err)
 	}
 
 	sqlDb, err := db.DB()
