@@ -19,11 +19,14 @@ help: ## Show list of make targets and their description
 
 .DEFAULT_GOAL:= help
 
-run: 
-	go run cmd/server/main.go \
-		-jwt 'test jwt' \
-		-redis "redis://localhost:6379" \
-		-db "postgres://postgres:postgres@localhost:54322/rmbg?sslmode=disable"
+run:
+	go run main.go
+
+# run: 
+# 	go run cmd/server/main.go \
+# 		-jwt 'test jwt' \
+# 		-redis "redis://localhost:6379" \
+# 		-db "postgres://postgres:postgres@localhost:54322/rmbg?sslmode=disable"
 
 
 run_watch:

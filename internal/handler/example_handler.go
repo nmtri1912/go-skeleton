@@ -3,13 +3,13 @@ package handler
 import (
 	"fmt"
 	"go-skeleton/internal/request"
-	service "go-skeleton/internal/service/example"
+	usecase "go-skeleton/internal/usecase/example"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-func RegisterExampleHandler(router *gin.RouterGroup, exampleService service.ExampleService) {
+func RegisterExampleHandler(router *gin.RouterGroup, exampleService usecase.ExampleUsecase) {
 	handler := exampleHandler{
 		exampleService: exampleService,
 	}
@@ -18,7 +18,7 @@ func RegisterExampleHandler(router *gin.RouterGroup, exampleService service.Exam
 }
 
 type exampleHandler struct {
-	exampleService service.ExampleService
+	exampleService usecase.ExampleUsecase
 }
 
 func (h exampleHandler) info(ctx *gin.Context) {

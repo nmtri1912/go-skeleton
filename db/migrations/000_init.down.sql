@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS db_local.users;
+DROP SCHEMA IF EXISTS db_local CASCADE;

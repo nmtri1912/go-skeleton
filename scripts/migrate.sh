@@ -5,6 +5,7 @@
 
 # Source the common.sh script
 # shellcheck source=./common.sh
+DB_URL=postgres://postgres:postgres@localhost:5432/db_local?sslmode=disable
 . "$(git rev-parse --show-toplevel || echo ".")/scripts/common.sh"
 . "$(git rev-parse --show-toplevel || echo ".")/.conf"
 

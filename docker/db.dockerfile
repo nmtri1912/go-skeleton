@@ -1,4 +1,4 @@
-FROM postgres:11.6
+FROM postgres:15.2
 
 COPY docker/db/postgresql.conf /etc/postgresql/postgresql.conf
 RUN mkdir -p /var/lib/postgresql-static/data
