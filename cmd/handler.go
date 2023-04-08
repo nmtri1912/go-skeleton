@@ -7,6 +7,7 @@ import (
 	usecase "go-skeleton/internal/usecase/example"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis/v8"
 )
 
 func (s server) RegisterHandler() {
@@ -16,11 +17,18 @@ func (s server) RegisterHandler() {
 	// init database conn
 	db := db.NewDB()
 
+	// init redis conn
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "", // no password set
+		DB:       0,  // use default DB
+	})
+
 	// init repo
 	exampleRepo := repository.NewExampleRepo(db)
 
 	// init usecase
-	exampleUsecase := usecase.NewExampleUsecase(exampleRepo)
+	exampleUsecase := usecase.NewExampleUsecase(exampleRepo, rdb)
 
 	// init handler
 	exampleGroup := s.router.Group("/example")

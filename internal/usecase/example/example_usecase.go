@@ -5,11 +5,14 @@ import (
 	"go-skeleton/internal/entity"
 	repository "go-skeleton/internal/infrastructure/repository/example"
 	"go-skeleton/internal/request"
+
+	"github.com/go-redis/redis/v8"
 )
 
-func NewExampleUsecase(exampleRepo repository.ExampleRepository) ExampleUsecase {
+func NewExampleUsecase(exampleRepo repository.ExampleRepository, rdb *redis.Client) ExampleUsecase {
 	return exampleUsecase{
-		repo: exampleRepo,
+		repo:  exampleRepo,
+		redis: rdb,
 	}
 }
 
@@ -18,7 +21,8 @@ type ExampleUsecase interface {
 }
 
 type exampleUsecase struct {
-	repo repository.ExampleRepository
+	repo  repository.ExampleRepository
+	redis *redis.Client
 }
 
 func (s exampleUsecase) CreateExample(ctx context.Context, req *request.ExampleRequest) (*entity.Example, error) {
