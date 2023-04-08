@@ -52,7 +52,7 @@ build/mac: ## Show build.sh help for building binnary package under cmd
 	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main ./cmd/server/
 
 gen: ## Generate models using sqlboiler following pre-defined templates
-	sqlboiler psql --wipe --add-soft-deletes --templates ./db/templates
+	sqlboiler psql -c ./db/postgres.toml --wipe --add-soft-deletes --templates ./db/templates
 
 db/migrate: ## Migrate database structure
 	@scripts/migrate.sh up
